@@ -1,0 +1,24 @@
+{
+  "examples": [
+    {
+      "file": "examples/monit-alert.sh",
+      "title": "Monit alert to operations channel"
+    },
+    {
+      "file": "examples/sentry-webhook.sh",
+      "title": "Sentry webhook to ticket"
+    },
+    {
+      "file": "examples/cron-broadcast.sh",
+      "title": "Scheduled segment broadcast"
+    },
+    {
+      "file": "examples/bos-alerting.sh",
+      "title": "BOS escalation alert"
+    },
+    {
+      "file": "examples/ai-reply-bot.sh",
+      "title": "AI-assisted chat reply"
+    }
+  ]
+}
