@@ -1,58 +1,58 @@
 # instantKOM CLI Cookbook
 
-Production-oriented examples for using `ikm` in monitoring, automation, and incident workflows.
+Praxisnahe Beispiele für `ikm` in Monitoring, Automatisierung und Incident-Workflows.
 
-[![CLI Documentation](https://img.shields.io/badge/CLI%20Docs-instantKOM-blue)](https://app.instantkom.app/de/help/cli)
-[![npm package](https://img.shields.io/badge/npm-%40instantkom%2Fcli-red)](https://www.npmjs.com/package/@instantkom/cli)
+[![CLI-Dokumentation](https://img.shields.io/badge/CLI%20Doku-instantKOM-blue)](https://instantkom.app/de/help/cli)
+[![npm-Paket](https://img.shields.io/badge/npm-%40instantkom%2Fcli-red)](https://www.npmjs.com/package/@instantkom/cli)
 
-## Install
+## Installation
 
 ```bash
 npm install -g @instantkom/cli
 ikm --help
 ```
 
-## Before running examples
+## Vor dem Ausführen
 
-Set the target API and authenticate through environment variables or a configured profile:
+Setzen Sie die Ziel-API und authentifizieren Sie sich über Umgebungsvariablen oder ein konfiguriertes Profil:
 
 ```bash
-export IKM_API_URL="https://staging.instantkom.app/api"
+export IKM_API_URL="https://api.instantkom.app"
 export IKM_API_KEY="<scoped-api-token>"
 ```
 
-The examples intentionally use placeholders. Replace IDs such as `channel_ops` or `segment_members` with IDs from your tenant.
+Die Beispiele verwenden bewusst Platzhalter. Ersetzen Sie IDs wie `channel_ops` oder `segment_members` durch IDs aus Ihrem eigenen Mandanten.
 
-## Workflow examples
+## Workflow-Beispiele
 
-| Workflow | File | What it demonstrates |
+| Workflow | Datei | Was das Beispiel zeigt |
 |----------|------|----------------------|
-| Monitoring alert | [`examples/monit-alert.sh`](examples/monit-alert.sh) | Posts infrastructure alerts into an operations channel and tails recent activity. |
-| Sentry webhook | [`examples/sentry-webhook.sh`](examples/sentry-webhook.sh) | Converts a Sentry-style webhook payload into a high-priority support ticket. |
-| Scheduled newsletter | [`examples/cron-broadcast.sh`](examples/cron-broadcast.sh) | Schedules a segment-targeted weekly reminder. |
-| BOS escalation | [`examples/bos-alerting.sh`](examples/bos-alerting.sh) | Sends operational escalation alerts and opens a tracking ticket. |
-| AI-assisted reply | [`examples/ai-reply-bot.sh`](examples/ai-reply-bot.sh) | Drafts a concise AI reply and optionally sends it into an active chat. |
+| Monitoring-Alarm | [`examples/monit-alert.sh`](examples/monit-alert.sh) | Sendet Infrastruktur-Alarme in einen Operations-Kanal und zeigt aktuelle Aktivität. |
+| Sentry-Webhook | [`examples/sentry-webhook.sh`](examples/sentry-webhook.sh) | Wandelt einen Sentry-ähnlichen Webhook-Payload in ein Support-Ticket mit hoher Priorität um. |
+| Geplanter Newsletter | [`examples/cron-broadcast.sh`](examples/cron-broadcast.sh) | Plant eine regelmäßige Erinnerung an ein Segment. |
+| BOS-Eskalation | [`examples/bos-alerting.sh`](examples/bos-alerting.sh) | Sendet operative Eskalationsmeldungen und erstellt ein Tracking-Ticket. |
+| KI-Antwortentwurf | [`examples/ai-reply-bot.sh`](examples/ai-reply-bot.sh) | Erstellt einen kurzen KI-Antwortentwurf und sendet ihn optional in einen aktiven Chat. |
 
-## Broadcast targeting
+## Newsletter-Zielgruppen
 
-Broadcasts are created for channels, channel/segment pairs, or reusable target groups. They do not accept arbitrary recipient lists. Use:
+Newsletter werden für Kanäle, Kanal/Segment-Kombinationen oder wiederverwendbare Zielgruppen erstellt. Beliebige Empfängerlisten sind hier nicht das Modell. Verwenden Sie:
 
 ```bash
 ikm broadcast create --target channel_ops:segment_members --text "..."
 ```
 
-Do not model broadcasts as `--recipient`, `--recipients`, or `--to` calls.
+Modellieren Sie Newsletter nicht als `--recipient`, `--recipients` oder `--to`-Aufrufe.
 
-## Run an example
+## Beispiel ausführen
 
 ```bash
 chmod +x examples/monit-alert.sh
 IKM_CHANNEL_ID="channel_ops" IKM_RECIPIENT_ID="recipient_ops_room" examples/monit-alert.sh
 ```
 
-## Source of truth
+## Source of Truth
 
-The canonical source lives in the instantKOM monorepo at `services/cli/cookbook`.
-The public repository mirrors the checked examples to:
+Die kanonische Quelle liegt im instantKOM-Monorepo unter `services/cli/cookbook`.
+Das öffentliche Repository spiegelt die geprüften Beispiele nach:
 
 https://github.com/instantKOM/cli-examples
